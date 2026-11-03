@@ -46,7 +46,7 @@ Run `npm run db:setup` once against the production database after first deploy.
 
 ## Suggested next steps
 
-1. Deploy to Vercel + Neon; fill in live URL in README.
+1. ~~Deploy to Vercel + Neon~~ — done: https://collab-docs-sreecharan-desus-projects.vercel.app
 2. Record narrated video using `docs/VIDEO_SCRIPT.md`.
 3. Add optional invite flow (email magic link) for users not yet registered.
 4. Add Yjs / PartyKit or similar if true real-time co-editing is required.

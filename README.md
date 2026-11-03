@@ -6,7 +6,7 @@ A lightweight, Google Docs–style collaborative document editor built as a take
 
 ## Live demo
 
-**URL:** _TBD — add your Vercel deployment URL after deploy_
+**URL:** https://collab-docs-sreecharan-desus-projects.vercel.app (Vercel Hobby + Neon free tier; demo logins `alice@demo.com` / `demo1234`, `bob@demo.com` / `demo1234`)
 
 ## Demo accounts
 
