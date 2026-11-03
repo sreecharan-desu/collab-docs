@@ -1,0 +1,50 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ShareRole {
+  VIEWER
+  EDITOR
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String
+  createdAt    DateTime @default(now())
+
+  ownedDocuments Document[]       @relation("DocumentOwner")
+  shares         DocumentShare[]
+}
+
+model Document {
+  id        String   @id @default(cuid())
+  title     String
+  content   Json     @default("{}")
+  ownerId   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  owner  User              @relation("DocumentOwner", fields: [ownerId], references: [id], onDelete: Cascade)
+  shares DocumentShare[]
+}
+
+model DocumentShare {
+  id         String    @id @default(cuid())
+  documentId String
+  userId     String
+  role       ShareRole @default(VIEWER)
+  createdAt  DateTime  @default(now())
+
+  document Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([documentId, userId])
+  @@index([userId])
+}
